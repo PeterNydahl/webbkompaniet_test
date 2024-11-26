@@ -1,0 +1,378 @@
+:root {
+    --hip-blue: #001e63;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    color: var(--hip-blue);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+}
+
+hr {
+    width: 100%;
+    border: none;
+    background-color: hsl(0, 0%, 85%);
+    height: 0.5px;
+}
+
+.expandable-row {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+}
+
+.info-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+[id^="toggle"] {
+    display: none;
+}
+
+.toggle-icon {
+    font-size: 2rem;
+    /* Justera storlek efter behov */
+    cursor: pointer;
+    user-select: none;
+    /* Förhindra att texten markeras vid klick */
+    transition: transform 0.3s ease;
+    /* Lägg till en enkel animation för klick */
+}
+
+
+/* Alla toggle-checkboxar som är markerade */
+input[type="checkbox"]:checked+label .toggle-icon::before {
+    content: "−";
+    /* Visar minus när aktiv */
+}
+
+/* Alla toggle-checkboxar som inte är markerade */
+input[type="checkbox"]:not(:checked)+label .toggle-icon::before {
+    content: "+";
+    /* Visar plus när inaktiv */
+}
+
+.content-container {
+    display: flex;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+}
+
+input[type="checkbox"]:not(:checked)+label+.content-container {
+    animation: grow 1.3s ease-in-out forwards, fadeIn 1s 0.5s forwards;
+}
+/* 
+input[type="checkbox"]:not(:checked)+label+.content-container {
+    animation: fadeOut 0.5s forwards, shrink 1s ease-in-out forwards;
+} */
+
+@keyframes grow {
+    0% {
+        max-height: 0;
+        margin-top: 0rem;
+    }
+
+    100% {
+        max-height: 2000px;
+        /* Anpassa efter ditt behov */
+        margin-top: 0.7rem;
+    }
+}
+
+@keyframes shrink {
+    0% {
+        max-height: 2000px;
+        opacity: 1;
+        margin-top: 0.7rem;
+    }
+
+    100% {
+        max-height: 0;
+        opacity: 0;
+        margin-top: 0rem;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* *********************************STYLES SPECIFICALLY FOR SECTION 1************************************ */
+
+.section-one-container {
+    width: 100%;
+    display: flex;
+}
+
+.content-container-left {
+    width: 50%;
+}
+
+
+.section-one-container .content-container-left{
+    display: flex;
+    flex-direction: column;
+    gap : 1rem;
+}
+    
+.section-one-data-row{
+    width: 100%;
+    display: flex;
+}
+
+.category-text{
+    font-weight: 800;
+    width: 40%;
+}
+
+
+.progress-bar-wrapper {
+    margin-top: 0.55rem;
+    /* To make the text beguin at se same height as the left side*/
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.progress-bar-container {
+    display: flex;
+    align-items: center;
+}
+
+.text-container-progress-bar {
+    width: 30%;
+}
+
+.progress-bar-section {
+    /* border: solid 1px red; */
+    height: 100%;
+
+}
+
+
+.text-progress-bar {
+    margin: 0.8rem 0.5rem 0rem 0.8rem;
+}
+
+.bold-text {
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+}
+
+.content-container-right {
+    display: flex;
+    width: 50%;
+}
+
+.progress-bar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 0.8rem;
+}
+
+.progress-bar {
+    width: 80%;
+    height: 10px;
+    border: solid 1px;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    position: relative;
+}
+
+.progress-bar.support::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 35%;
+    background-color: var(--hip-blue);
+    border-radius: 5px 0 0 5px;
+}
+
+.progress-bar.cushioning {
+    background-color: var(--hip-blue);
+    ;
+}
+
+/* *********************************STYLES SPECIFICALLY FOR SECTION 2************************************ */
+
+.medium-size-text {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+}
+
+.section-two-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.section-two-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.content-container-left img {
+    width: 60%;
+}
+
+.section-two-container .content-container-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: solid 1px blue; */
+}
+
+.section-two-container .content-container-right {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+}
+
+.header-with-text {
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+}
+
+.header-with-text p {
+    margin: 0;
+}
+
+/* *********************************STYLES SPECIFICALLY FOR SECTION 3************************************ */
+.section-three-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.section-three-container .content-container-row {
+    display: flex;
+    gap: 2rem;
+    padding: 0.8rem 0;
+}
+
+.section-three-container .row-left,
+.section-three-container .row-right {
+    width: 50%;
+    padding: 0 2rem;
+}
+
+
+
+.section-three-container .content-container-right {
+    border: solid 1px red;
+}
+
+/* *********************************STYLES SPECIFICALLY FOR SECTION 4************************************ */
+.centered-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.centered-header h3 {
+    margin: 0;
+}
+
+
+.section-four-container .content-container-row {
+    display: flex;
+    gap: 2rem;
+}
+
+.section-four-container .row-left,
+.section-four-container .row-right {
+    padding: 0 1.5rem;
+}
+
+/* *********************************STYLES FOR DIFFERENT DEVICES************************************ */
+
+/* Default för mobiler (0px - 767px) */
+@media (max-width: 767px) {
+    .section-one-container {
+        border: solid 1px solid red;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .content-container-left {
+        width: 100%;
+    }
+
+    .section-one-data-row {
+        width: 100%;
+        display: flex;
+    }
+    .section-one-container .category-text {
+        width: 35%;
+    }
+
+
+
+    .section-one-container .content-container-right {
+        width: 100%;
+    }
+
+    .text-container-progress-bar {
+        width: 40%
+    }
+
+    .section-two-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
+
+/* För surfplattor (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+/* För desktops (1024px och uppåt) */
+@media (min-width: 1024px) {
+    .wrapper {
+        width: 70vw;
+    }
+}
